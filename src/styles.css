@@ -1,0 +1,90 @@
+
+* {
+  margin: 0 auto;
+  box-sizing: border-box;
+ font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(59, 62, 65);
+}
+div {
+  height: 100%;
+}
+mesh {
+  color: green;
+}
+h1 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 100px;
+  transform: translate(-50%, -50%);
+  color:white;
+  
+  z-index: 3;
+  transition-duration: 0.5s;
+  box-shadow: 0 -3em 3em rgba(0,0,0,0.1),
+    0 0  0 2px rgb(255,255,255),
+    0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+h1:hover {
+  box-shadow: 
+    0.3em 0.3em 1em rgba(31, 75, 26, 0.588);
+  cursor: pointer;
+}
+h2 {
+  position: absolute;
+  right: 50%;
+  bottom: 0%;
+  font-size: 20px;
+  transform: translate(50%, 0);
+ 
+  padding: 10px;
+  border: 4px solid rgb(252, 252, 252);color: white;
+}
+h4:hover {
+  border-bottom: 0 solid white;
+  border-right: 0 solid white;
+}
+h3 {
+  position: absolute;
+  color: rgb(3, 3, 2);
+  left: 50%;
+  font-size: 30px;
+  transform: translateX(-50%);
+  z-index: 10;
+  box-shadow: 0 -3em 3em rgba(0,0,0,0.1),
+    0 0  0 2px rgb(255,255,255),
+    0.3em 0.3em 1em rgba(0,0,0,0.3);
+  padding:5px;
+}
+
+h4 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 40px;
+  transform: translate(-50%, -50%);
+  
+  border: 4px solid rgb(255, 255, 255);
+  z-index: 3;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

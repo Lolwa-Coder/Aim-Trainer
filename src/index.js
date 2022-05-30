@@ -89,7 +89,7 @@ function RimLight({ brightness, color }) {
   );
 }
 function Title() {
-  return <Text material-toneMapped={false}>MicroFlix</Text>
+  return <Text material-toneMapped={false}></Text>
 }
 function GroundPlane() {
   return (
@@ -111,10 +111,12 @@ function BackDrop() {
 function Sphere1() {
   const [count1, setCount1] = useState(0);
   console.log(count1);
+  document.getElementById('output').innerHTML =count1;
   const [white, setWhite] = useState("red");
   const changer = () => {
+    var color2 =Math.random();
     return (
-      "rgb( " + (250 - count1 * 5) + "," + count1 * 5 + "," + count1 * 5 + ")"
+      "rgb( " + (250*color2) + "," + 250*color2 + "," + 250*color2 + ")"
     );
   };
 
@@ -139,7 +141,7 @@ function Sphere1() {
           attach="material"
           color={white}
           transparent
-          roughness={0.1}
+          roughness={0.4}
           metalness={0.1}
         />
       </mesh>
@@ -153,22 +155,23 @@ function App() {
   const [exit, setExit] = useState(false);
   const [bg, setBg] = useState("white");
 
-  const changer = () => {
-    return (
-      "rgb( " +
-      (50 + countO * 4) +
-      "," +
-      (50 + countO * 4) +
-      "," +
-      (50 + countO * 4) +
-      ")"
-    );
-  };
+  //const changer = () => {
+  ////  
+  //  return (
+   //   "rgb(" +
+  //    (50+ Math.random() * 190) +
+  //    "," +
+  //    ( 50+ Math.random() * 190) +
+  //    "," +
+  //    ( 50+ Math.random() * 190) +
+  //    ")"
+  //  );
+ // };
 
   if (signIn === false)
     return (
       <><Canvas style={{ background: '#324444' }} camera={{ position: [0, 50, 10], fov: 75 }}><Scene /></Canvas>
-        <h1 onClick={() => setSignIn(true)}>MicroFlix</h1>
+        <h1 onClick={() => setSignIn(true)}>Press to Play</h1>
         <h2>
           {" "}
           shoot 50 bullets and we will guess your rank. ps- it gets darker
@@ -179,8 +182,13 @@ function App() {
     return (
       <div>
         <h4>
+        Your rank:
+        {document.getElementById('output').innerHTML>25?"good one":"get a mouse please"}
+          
+          
           <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-            Click here to see Ur rank
+            
+           
           </a>
         </h4>
       </div>
@@ -190,22 +198,29 @@ function App() {
       <div
         onClick={() => {
           setCountO(countO - 1);
-          setBg(changer());
+          setBg("rgb(" +
+          (50+ Math.random() * 190) +
+          "," +
+          ( 50+ Math.random() * 190) +
+          "," +
+          ( 50+ Math.random() * 190) +
+          ")");
           if (countO < 2) {
             setCountO(50);
             setExit(true);
           }
         }}
       >
-        <h3 className="unselectable">{countO}</h3>
+        <h3 id="output">Current Score:</h3>
+
         <Canvas >
           
           <Title />
           <GroundPlane color={bg} />
           <BackDrop color={bg} />
-          <KeyLight color={bg} />
-          <RimLight color={bg} />
-          <FillLight color={bg} />
+          <KeyLight color="blue" />
+          <RimLight color="red" />
+          <FillLight color="violet" />
           <Sphere1 />
         </Canvas>
       </div>
